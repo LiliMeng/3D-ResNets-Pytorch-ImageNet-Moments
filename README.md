@@ -270,3 +270,9 @@ python main.py --root_path ~/data --video_path ucf101_videos/jpg --annotation_pa
 --pretrain_path models/resnet-34-kinetics.pth --ft_begin_index 4 \
 --model resnet --model_depth 34 --resnet_shortcut A --batch_size 128 --n_threads 4 --checkpoint 5
 ```
+
+Fine-tuning on Moments dataset with a inflated pretrained model on ImageNet using ResNet101
+
+```bash
+python main.py --root_path ./data --video_path moments/training/ --annotation_path moments.json --result_path results --dataset moments --n_classes 1000 --n_finetune_classes 339 --pretrain_path models/inflated_resnet-101-imagenet.pth --ft_begin_index 0 --model resnet --model_depth 101 --resnet_shortcut B --batch_size 128 --n_threads 16 --checkpoint 1 --learning_rate 0.01  --weight_decay 1e-5 --lr_patience 10 --sample_duration 8 --sample_size 224
+```
